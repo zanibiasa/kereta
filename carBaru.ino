@@ -16,8 +16,8 @@
 #define motorKananReverse 13
 
 #define SONAR_NUM 4      // Number or sensors.
-#define MAX_DISTANCE 40  // Max distance in cm.
-#define PING_INTERVAL 15 // Milliseconds between pings.
+#define MAX_DISTANCE 25  // Max distance in cm.
+#define PING_INTERVAL 10  // Milliseconds between pings.
 
 unsigned long pingTimer[SONAR_NUM]; // When each pings.
 unsigned int cm[SONAR_NUM];         // Store ping distances.

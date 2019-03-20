@@ -28,7 +28,7 @@ NewPing sonar[SONAR_NUM] = {
     NewPing(Trig1, Echo1, MAX_DISTANCE),
     NewPing(Trig2, Echo2, MAX_DISTANCE),
     NewPing(Trig3, Echo3, MAX_DISTANCE),
-    NewPing(Trig4, Trig4, MAX_DISTANCE),
+    NewPing(Trig4, Echo4, MAX_DISTANCE),
 };
 
 void setup()
@@ -39,10 +39,11 @@ void setup()
     pinMode(Echo1, INPUT);
     pinMode(Trig1, OUTPUT);
     pinMode(Echo2, INPUT);
-    pinMode(Echo3, OUTPUT);
-    pinMode(Trig3, INPUT);
-    pinMode(Echo4, OUTPUT);
-    pinMode(Trig4, INPUT);
+    pinMode(Trig2, OUTPUT);
+    pinMode(Echo3, INPUT);
+    pinMode(Trig3, OUTPUT);
+    pinMode(Echo4, INPUT);
+    pinMode(Trig4, OUTPUT);
 
     pinMode(motorKiriForward, OUTPUT);
     pinMode(motorKiriReverse, OUTPUT);
@@ -60,18 +61,16 @@ void loop()
 {
     for (uint8_t i = 0; i < SONAR_NUM; i++)
     {
-        if (millis() >= pingTimer[i])
-        {
-            pingTimer[i] += PING_INTERVAL * SONAR_NUM;
-            if (i == 0 && currentSensor == SONAR_NUM - 1)
-            {
-                oneSensorCycle(); // Do something with results.
-            }
+        
+        
+           
+        
             sonar[currentSensor].timer_stop();
             currentSensor = i;
             cm[currentSensor] = 0;
             sonar[currentSensor].ping_timer(echoCheck);
-        }
+            oneSensorCycle(); // Do something with results.
+        
     }
 }
 
